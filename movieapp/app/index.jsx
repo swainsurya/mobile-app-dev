@@ -1,3 +1,4 @@
+import MovieList from "@/components/MovieList";
 import TrendingMovies from "@/components/TrendingMovies";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
@@ -26,6 +27,9 @@ export default function Index() {
     }
   ]);
 
+  const [upcoming, setUpcoming] = useState([1,2,3,4,5,6,7]);
+  const [topRated, setTopRated] = useState([1,2,3,4,5]);
+
   return (
     <View className="flex-1 bg-neutral-800">
       {/* searchbar and logo */}
@@ -45,6 +49,12 @@ export default function Index() {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 10 }}>
         {/* Trending movies carousel*/}
         <TrendingMovies data={trending} />
+
+        {/* Upcoming movies */}
+        <MovieList title={"Upcoming"} data={upcoming} />
+
+        {/* Top Rated Movies */}
+        <MovieList title={"Top Rated"} data={topRated} />
       </ScrollView>
     </View>
   );

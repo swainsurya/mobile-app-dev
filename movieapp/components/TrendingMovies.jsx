@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import React from 'react';
-import { Dimensions, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 
 const { height, width } = Dimensions.get("window");
@@ -12,17 +12,15 @@ const TrendingMovies = ({ data }) => {
             <Carousel
                 loop
                 width={width}
-                height={width * 0.8}
+                height={width}
                 data={data}
-                scrollAnimationDuration={800}
+                autoPlay
+                autoPlayInterval={1000}
+                scrollAnimationDuration={1000}
                 style={{display:"flex", alignItems:"center"}}
                 renderItem={({ item }) => (
                     <MovieCard item={item} />
                 )}
-                modeConfig={{
-                    parallaxScrollingScale: 0.9,
-                    parallaxScrollingOffset: 50,
-                }}
             />
 
         </View>
@@ -31,17 +29,17 @@ const TrendingMovies = ({ data }) => {
 
 const MovieCard = ({ item }) => {
     return (
-        <TouchableWithoutFeedback onPress={() => console.log("Pressed", item)}>
+        <TouchableOpacity className='flex items-center justify-around'>
             <Image
                 source="https://movie4uz.wordpress.com/wp-content/uploads/2025/04/mv5byjhkzjm3zwytmjuxms00yzhlltkxzwytmzhkmzfhotq1njrkxkeyxkfqcgc40._v1_.jpg"
                 style={{
-                    width: width * 0.6,
-                    height: height * 0.4,
-                    borderRadius: 30,
+                    width: width*0.6,
+                    height: height * 0.4
                 }}
-                contentFit="cover"
+                contentFit='cover'
+                className='rounded-3xl'
             />
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
     );
 };
 
