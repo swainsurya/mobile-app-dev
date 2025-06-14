@@ -1,6 +1,7 @@
 import { Image } from 'expo-image';
+import { Link } from 'expo-router';
 import React from 'react';
-import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Text, View } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 
 const { height, width } = Dimensions.get("window");
@@ -29,17 +30,20 @@ const TrendingMovies = ({ data }) => {
 
 const MovieCard = ({ item }) => {
     return (
-        <TouchableOpacity className='flex items-center justify-around'>
+        <Link href={{
+            pathname: "/MovieScreen",
+            params: {name: item.title}
+        }} className='flex items-center justify-around w-full'>
             <Image
                 source="https://movie4uz.wordpress.com/wp-content/uploads/2025/04/mv5byjhkzjm3zwytmjuxms00yzhlltkxzwytmzhkmzfhotq1njrkxkeyxkfqcgc40._v1_.jpg"
                 style={{
-                    width: width*0.6,
-                    height: height * 0.4
+                    width: width*0.7,
+                    height: width
                 }}
                 contentFit='cover'
                 className='rounded-3xl'
             />
-        </TouchableOpacity>
+        </Link>
     );
 };
 
